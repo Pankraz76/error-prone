@@ -218,6 +218,18 @@
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
           </compilerArgs>
+            <annotationProcessorPaths>
+                <path>
+                    <groupId>com.google.errorprone</groupId>
+                    <artifactId>error_prone_core</artifactId>
+                    <version>${error-prone.version}</version>
+                </path>
+                <path>
+                    <groupId>tech.picnic.error-prone-support</groupId>
+                    <artifactId>error-prone-contrib</artifactId>
+                    <version>${error-prone-support.version}</version>
+                </path>
+            </annotationProcessorPaths>
           <testExcludes>
             <exclude>**/testdata/**</exclude>
           </testExcludes>
