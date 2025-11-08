@@ -15,6 +15,7 @@
 package com.google.errorprone.refaster.testdata;
 
 import java.util.Comparator;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Test data for {@code IfTemplate}.
@@ -24,7 +25,7 @@ import java.util.Comparator;
 public class IfTemplateExample {
   public String example() {
     String foo;
-    if (Math.random() < 0.5) {
+    if (ThreadLocalRandom.current().nextDouble() < 0.5) {
       foo = "bar";
     } else {
       foo = "baz";

@@ -24,8 +24,8 @@
     <version>1.0-HEAD-SNAPSHOT</version>
   </parent>
 
-  <name>Documentation tool for generating Error Prone bugpattern documentation</name>
   <artifactId>error_prone_docgen</artifactId>
+  <name>Documentation tool for generating Error Prone bugpattern documentation</name>
 
   <licenses>
     <license>
@@ -33,37 +33,6 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>com.google.auto.value</groupId>
-              <artifactId>auto-value</artifactId>
-              <version>${autovalue.version}</version>
-            </path>
-            <path>
-              <groupId>com.google.auto.service</groupId>
-              <artifactId>auto-service</artifactId>
-              <version>${autoservice.version}</version>
-            </path>
-          </annotationProcessorPaths>
-        </configuration>
-      </plugin>
-    </plugins>
-    <resources>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <include>**/*.mustache</include>
-        </includes>
-      </resource>
-    </resources>
-  </build>
 
   <dependencies>
     <dependency>
@@ -126,6 +95,38 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.1</version>
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>com.google.auto.value</groupId>
+              <artifactId>auto-value</artifactId>
+              <version>${autovalue.version}</version>
+            </path>
+            <path>
+              <groupId>com.google.auto.service</groupId>
+              <artifactId>auto-service</artifactId>
+              <version>${autoservice.version}</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.mustache</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+
   <profiles>
     <profile>
       <id>run-annotation-processor</id>
@@ -144,9 +145,9 @@
                 <configuration>
                   <mainClass>com.google.errorprone.DocGenTool</mainClass>
                   <arguments>
-                    <argument>-bug_patterns=${basedir}/../core/target/generated-sources/annotations/bugPatterns.txt</argument>
-                    <argument>-docs_repository=${basedir}/target/generated-wiki/</argument>
-                    <argument>-explanations=${basedir}/../docs/bugpattern/</argument>
+                    <argument>-bug_patterns=${project.basedir}/../core/target/generated-sources/annotations/bugPatterns.txt</argument>
+                    <argument>-docs_repository=${project.basedir}/target/generated-wiki/</argument>
+                    <argument>-explanations=${project.basedir}/../docs/bugpattern/</argument>
                     <argument>-target=external</argument>
                   </arguments>
                 </configuration>

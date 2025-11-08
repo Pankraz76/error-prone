@@ -26,9 +26,9 @@ public class TwoLinesToOneTemplateExample {
     Random rng = new Random();
     int x = rng.nextInt();
     x = x + rng.nextInt() + 20;
-    
+
     x = x + 5 + rng.nextInt(30);
-    
+
     x = x + 20;
     // comments should block matching
     x = x + rng.nextInt();

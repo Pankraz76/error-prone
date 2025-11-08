@@ -31,7 +31,7 @@ public class PlaceholderTemplateExample {
       }
     }
   }
-  
+
   public void negativeIdentityExample(List<Boolean> list) {
     Iterator<Boolean> itr = list.iterator();
     while (itr.hasNext()) {

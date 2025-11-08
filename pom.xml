@@ -18,14 +18,57 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <name>Error Prone parent POM</name>
   <groupId>com.google.errorprone</groupId>
   <artifactId>error_prone_parent</artifactId>
   <version>1.0-HEAD-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <name>Error Prone parent POM</name>
 
   <description>Error Prone is a static analysis tool for Java that catches common programming mistakes at compile-time.</description>
   <url>https://errorprone.info</url>
+
+  <organization>
+    <name>Google LLC</name>
+    <url>https://www.google.com</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Eddie Aftandilian</name>
+    </developer>
+  </developers>
+
+  <modules>
+    <module>check_api</module>
+    <module>test_helpers</module>
+    <module>core</module>
+    <module>annotation</module>
+    <module>annotations</module>
+    <module>type_annotations</module>
+    <module>docgen</module>
+    <module>docgen_processor</module>
+    <module>refaster</module>
+  </modules>
+
+  <scm>
+    <connection>scm:git:https://github.com/Pankraz76/error-prone.git</connection>
+    <developerConnection>scm:git:git@github.com:Pankraz76/error-prone.git</developerConnection>
+    <url>https://github.com/Pankraz76/error-prone</url>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,42 +90,6 @@
     <jspecify.version>1.0.0</jspecify.version>
     <google-java-format.version>1.27.0</google-java-format.version>
   </properties>
-
-  <organization>
-    <name>Google LLC</name>
-    <url>https://www.google.com</url>
-  </organization>
-
-  <developers>
-    <developer>
-      <name>Eddie Aftandilian</name>
-    </developer>
-  </developers>
-
-  <modules>
-    <module>check_api</module>
-    <module>test_helpers</module>
-    <module>core</module>
-    <module>annotation</module>
-    <module>annotations</module>
-    <module>type_annotations</module>
-    <module>docgen</module>
-    <module>docgen_processor</module>
-    <module>refaster</module>
-  </modules>
-
-  <scm>
-    <connection>scm:git:https://github.com/google/error-prone.git</connection>
-    <developerConnection>scm:git:git@github.com:google/error-prone.git</developerConnection>
-    <url>https://github.com/google/error-prone</url>
-  </scm>
-
-  <licenses>
-    <license>
-      <name>Apache 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
 
   <build>
     <resources>
@@ -112,9 +119,42 @@
             <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.openrewrite.maven</groupId>
+          <artifactId>rewrite-maven-plugin</artifactId>
+          <version>6.23.0</version>
+          <configuration>
+            <activeRecipes>
+              <recipe>org.keycloak.openrewrite.SanityCheck</recipe>
+            </activeRecipes>
+            <exportDatatables>true</exportDatatables>
+            <failOnDryRunResults>true</failOnDryRunResults>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.openrewrite.recipe</groupId>
+              <artifactId>rewrite-migrate-java</artifactId>
+              <version>3.21.1</version>
+            </dependency>
+            <dependency>
+              <groupId>org.openrewrite.recipe</groupId>
+              <artifactId>rewrite-static-analysis</artifactId>
+              <version>2.21.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.openrewrite.recipe</groupId>
+              <artifactId>rewrite-rewrite</artifactId>
+              <version>0.15.0</version>
+            </dependency>
+          </dependencies>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <groupId>org.openrewrite.maven</groupId>
+        <artifactId>rewrite-maven-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -207,10 +247,9 @@
           <compilerArgs>
             <arg>--add-exports=java.base/jdk.internal.javac=ALL-UNNAMED</arg>
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
-            <arg>--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
-            <arg>--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+            <arg>--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
             <arg>--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
@@ -263,7 +302,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.5.4</version>
         <configuration>
           <jdkToolchain>
             <!--
@@ -317,13 +356,6 @@
       </plugin>
     </plugins>
   </build>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>sonatype-nexus-snapshots</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
 
   <profiles>
     <profile>
@@ -401,6 +433,7 @@
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-surefire-plugin</artifactId>
+              <version>3.5.4</version>
               <configuration>
                 <jdkToolchain>
                   <version>${surefire.jdk-toolchain-version}</version>

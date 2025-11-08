@@ -642,7 +642,7 @@ public class GuardedByBinderTest {
                       task.getContext(),
                       null,
                       VisitorState.createForUtilityPurposes(task.getContext())));
-          if (!guardExpression.isPresent()) {
+          if (guardExpression.isEmpty()) {
             throw new IllegalGuardedBy(exprString);
           }
           return guardExpression.get().debugPrint();

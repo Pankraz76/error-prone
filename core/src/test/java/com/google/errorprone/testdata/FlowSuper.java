@@ -16,7 +16,7 @@
 
 package com.google.errorprone.testdata;
 
-import static com.google.errorprone.testdata.FlowConstants.*;
+import static com.google.errorprone.testdata.FlowConstants.SOME_BYTE;
 
 public class FlowSuper {
   byte myByte = SOME_BYTE;

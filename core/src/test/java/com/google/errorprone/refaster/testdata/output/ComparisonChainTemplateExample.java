@@ -22,6 +22,6 @@ import com.google.common.collect.ComparisonChain;
 public class ComparisonChainTemplateExample {
   public int compare(String a, String b) {
     return ComparisonChain.start().compare(Integer.valueOf(a.length()), Integer.valueOf(b.length())).compare(a, b).result();
-    
+
   }
 }

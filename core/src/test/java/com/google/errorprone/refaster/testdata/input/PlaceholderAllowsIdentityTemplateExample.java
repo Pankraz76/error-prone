@@ -31,7 +31,7 @@ public class PlaceholderAllowsIdentityTemplateExample {
       }
     }
   }
-  
+
   public void positiveIdentityExample(List<Boolean> list) {
     Iterator<Boolean> itr = list.iterator();
     while (itr.hasNext()) {

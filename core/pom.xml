@@ -24,8 +24,8 @@
     <version>1.0-HEAD-SNAPSHOT</version>
   </parent>
 
-  <name>error-prone library</name>
   <artifactId>error_prone_core</artifactId>
+  <name>error-prone library</name>
 
   <licenses>
     <license>
@@ -75,6 +75,12 @@
       <version>4.0.1</version>
     </dependency>
     <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <version>1.3.5</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <!-- Apache 2.0 -->
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -98,6 +104,11 @@
       <groupId>io.github.eisop</groupId>
       <artifactId>dataflow-errorprone</artifactId>
       <version>${dataflow.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.inject</groupId>
+      <artifactId>jakarta.inject-api</artifactId>
+      <version>1.0.3</version>
     </dependency>
     <dependency>
       <!-- Apache 2.0 -->
@@ -190,7 +201,7 @@
       <version>5.1.0</version>
       <scope>test</scope>
     </dependency>
-      <!-- Apache 2.0 -->
+    <!-- Apache 2.0 -->
     <dependency>
       <groupId>com.google.inject.extensions</groupId>
       <artifactId>guice-testlib</artifactId>
@@ -354,7 +365,7 @@
       <artifactId>jspecify</artifactId>
       <version>${jspecify.version}</version>
     </dependency>
-      <!-- Apache 2.0 -->
+    <!-- Apache 2.0 -->
     <dependency>
       <groupId>javax.inject</groupId>
       <artifactId>javax.inject</artifactId>
@@ -374,6 +385,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.1</version>
         <configuration>
           <annotationProcessorPaths>
             <path>
@@ -485,6 +497,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.14.1</version>
             <configuration>
               <annotationProcessorPaths>
                 <path>

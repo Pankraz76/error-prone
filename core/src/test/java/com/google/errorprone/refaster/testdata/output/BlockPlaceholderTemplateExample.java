@@ -29,9 +29,9 @@ public class BlockPlaceholderTemplateExample {
     try (InputStream stream = new FileInputStream("foo.bar")){
     System.out.println(ByteStreams.toByteArray(stream).length);
 }
-    
+
   }
-  
+
   public void positiveExample2() throws IOException {
     try (InputStream stream = new FileInputStream("foo.bar")){
     int count = 0;
@@ -44,9 +44,9 @@ public class BlockPlaceholderTemplateExample {
     }
     System.out.println(count);
 }
-    
+
   }
-  
+
   public void negativeExample1() throws IOException { // modifies placeholder parameter
     InputStream stream = null;
     try {
@@ -56,7 +56,7 @@ public class BlockPlaceholderTemplateExample {
       stream.close();
     }
   }
-  
+
   public void negativeExample2() throws IOException { // changes control flow
     for (int i = 0; i < 10; i++) {
       InputStream stream = new FileInputStream("foo.bar");
