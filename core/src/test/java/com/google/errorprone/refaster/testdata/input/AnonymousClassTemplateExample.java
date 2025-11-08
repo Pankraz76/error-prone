@@ -40,7 +40,7 @@ public class AnonymousClassTemplateExample {
       }
     });
   }
-  
+
   public void sameOrderVariableConflicts() {
     System.out.println(new AbstractList<Integer>() {
       @Override

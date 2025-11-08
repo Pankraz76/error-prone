@@ -31,9 +31,9 @@ public class PlaceholderAllowsIdentityTemplateExample {
       public boolean apply(Integer input) {
         return input < 0;
       }
-    }); 
+    });
   }
-  
+
   public void positiveIdentityExample(List<Boolean> list) {
     Iterables.removeIf(list, new Predicate<Boolean>(){
       @Override

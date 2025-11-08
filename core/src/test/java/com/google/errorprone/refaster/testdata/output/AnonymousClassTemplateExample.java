@@ -26,7 +26,7 @@ public class AnonymousClassTemplateExample {
   public void sameOrderNoVariableConflicts() {
     System.out.println(Collections.nCopies(5, 17));
   }
-  
+
   public void sameOrderVariableConflicts() {
     System.out.println(Collections.nCopies(5, 17));
   }

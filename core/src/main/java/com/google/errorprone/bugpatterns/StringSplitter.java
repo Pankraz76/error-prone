@@ -79,7 +79,7 @@ public class StringSplitter extends BugChecker implements MethodInvocationTreeMa
       return NO_MATCH;
     }
     Optional<Fix> fix = buildFix(tree, state);
-    if (!fix.isPresent()) {
+    if (fix.isEmpty()) {
       return NO_MATCH;
     }
     // TODO(b/112270644): skip Splitter fix if guava isn't on the classpath
@@ -241,7 +241,7 @@ public class StringSplitter extends BugChecker implements MethodInvocationTreeMa
       return onPattern(fix, argSource);
     }
     Optional<String> regexAsLiteral = convertRegexToLiteral(constValue);
-    if (!regexAsLiteral.isPresent()) {
+    if (regexAsLiteral.isEmpty()) {
       // Can't convert the regex to a literal string: have to treat it as a regex.
       return onPattern(fix, argSource);
     }

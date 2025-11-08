@@ -32,7 +32,7 @@ public class ReturnPlaceholderTemplateExample {
       return left.toLowerCase().compareTo(right.toLowerCase());
     }
   };
-  
+
   public static final Ordering<String> LENGTH_THEN_LOWER_CASE_MULTI_LINE = new Ordering<String>() {
     @Override
     public int compare(String left, String right) {

@@ -33,7 +33,7 @@ public class BlockPlaceholderTemplateExample {
       stream.close();
     }
   }
-  
+
   public void positiveExample2() throws IOException {
     InputStream stream = new FileInputStream("foo.bar");
     try {
@@ -50,7 +50,7 @@ public class BlockPlaceholderTemplateExample {
       stream.close();
     }
   }
-  
+
   public void negativeExample1() throws IOException { // modifies placeholder parameter
     InputStream stream = null;
     try {
@@ -60,7 +60,7 @@ public class BlockPlaceholderTemplateExample {
       stream.close();
     }
   }
-  
+
   public void negativeExample2() throws IOException { // changes control flow
     for (int i = 0; i < 10; i++) {
       InputStream stream = new FileInputStream("foo.bar");

@@ -23,27 +23,27 @@ import com.google.common.collect.Ordering;
  */
 public class ReturnPlaceholderTemplateExample {
   public static final Ordering<String> LENGTH_THEN_LOWER_CASE_ONE_LINE = new Ordering<String>(){
-    
+
     @Override
     public int compare(String left, String right) {
         return Integer.compare(left.length(), right.length());
     }
 }.compound(new Ordering<String>(){
-    
+
     @Override
     public int compare(String left, String right) {
         return left.toLowerCase().compareTo(right.toLowerCase());
     }
 });
-  
+
   public static final Ordering<String> LENGTH_THEN_LOWER_CASE_MULTI_LINE = new Ordering<String>(){
-    
+
     @Override
     public int compare(String left, String right) {
         return Integer.compare(left.length(), right.length());
     }
 }.compound(new Ordering<String>(){
-    
+
     @Override
     public int compare(String left, String right) {
         String leftLower = left.toLowerCase();

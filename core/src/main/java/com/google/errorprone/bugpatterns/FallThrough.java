@@ -21,6 +21,7 @@ import static com.google.common.collect.Iterables.getOnlyElement;
 import static com.google.errorprone.BugPattern.SeverityLevel.WARNING;
 import static com.google.errorprone.matchers.Description.NO_MATCH;
 import static com.google.errorprone.util.ASTHelpers.getStartPosition;
+import static com.sun.tools.javac.util.Position.NOPOS;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.PeekingIterator;
@@ -33,7 +34,7 @@ import com.sun.source.tree.BlockTree;
 import com.sun.source.tree.CaseTree;
 import com.sun.source.tree.StatementTree;
 import com.sun.source.tree.SwitchTree;
-import com.sun.tools.javac.util.Position;
+
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -62,7 +63,7 @@ public class FallThrough extends BugChecker implements SwitchTreeMatcher {
       // independent of any preceding statements.
       boolean completes = Reachability.canCompleteNormally(getLast(statements));
       int endPos = caseEndPosition(state, caseTree);
-      if (endPos == Position.NOPOS) {
+      if (endPos == NOPOS) {
         break;
       }
       String comments =

@@ -24,8 +24,8 @@
     <version>1.0-HEAD-SNAPSHOT</version>
   </parent>
 
-  <name>error-prone test helpers</name>
   <artifactId>error_prone_test_helpers</artifactId>
+  <name>error-prone test helpers</name>
 
   <licenses>
     <license>

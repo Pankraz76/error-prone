@@ -28,7 +28,7 @@ public class AsVarargsTemplateExample {
   public void example() {
     System.out.println(
         Stream.of(IntStream.of(1), IntStream.of(2)).flatMap(s -> s.boxed()).mapToInt(i -> i).sum());
-    
+
     // unchanged, it's not using the varargs overload
     System.out.println(
         Stream.of(IntStream.of(1)).flatMap(s -> s.boxed()).mapToInt(i -> i).sum());

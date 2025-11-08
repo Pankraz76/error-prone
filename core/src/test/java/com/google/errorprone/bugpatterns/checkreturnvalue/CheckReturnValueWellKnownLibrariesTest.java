@@ -810,8 +810,4 @@ class Test {
     return compilationHelper.setArgs(
         "-XepOpt:" + CheckReturnValue.CHECK_ALL_CONSTRUCTORS + "=true");
   }
-
-  private CompilationTestHelper compilationHelperLookingAtAllMethods() {
-    return compilationHelper.setArgs("-XepOpt:" + CheckReturnValue.CHECK_ALL_METHODS + "=true");
-  }
 }

@@ -134,7 +134,7 @@ public final class ImmutableSetForContains extends BugChecker implements ClassTr
         fix.merge(convertListToSetInit(var, state));
       }
     }
-    if (!firstReplacement.isPresent()) {
+    if (firstReplacement.isEmpty()) {
       return Description.NO_MATCH;
     }
     return describeMatch(firstReplacement.get(), fix.build());

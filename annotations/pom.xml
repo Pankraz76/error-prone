@@ -24,8 +24,15 @@
     <version>1.0-HEAD-SNAPSHOT</version>
   </parent>
 
-  <name>error-prone annotations</name>
   <artifactId>error_prone_annotations</artifactId>
+  <name>error-prone annotations</name>
+
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
 
   <dependencies>
     <dependency>
@@ -36,18 +43,12 @@
     </dependency>
   </dependencies>
 
-  <licenses>
-    <license>
-      <name>Apache 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.1</version>
         <configuration>
           <compilerArgs combine.self="override" />
         </configuration>
@@ -79,6 +80,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.2</version>
         <configuration>
           <archive>
             <manifestEntries>

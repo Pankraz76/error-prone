@@ -27,15 +27,15 @@ import java.util.List;
 public class PlaceholderTemplateExample {
   public void positiveExample(List<Integer> list) {
     Iterables.removeIf(list, new Predicate<Integer>(){
-    
+
     @Override
     public boolean apply(Integer input) {
         return input < 0;
     }
 });
-    
+
   }
-  
+
   public void negativeIdentityExample(List<Boolean> list) {
     Iterator<Boolean> itr = list.iterator();
     while (itr.hasNext()) {

@@ -24,15 +24,8 @@
     <version>1.0-HEAD-SNAPSHOT</version>
   </parent>
 
-  <name>error-prone type annotations</name>
   <artifactId>error_prone_type_annotations</artifactId>
-
-  <distributionManagement>
-    <relocation>
-      <artifactId>error_prone_annotations</artifactId>
-      <message>error_prone_type_annotations has been merged into error_prone_annotations</message>
-    </relocation>
-  </distributionManagement>
+  <name>error-prone type annotations</name>
 
   <licenses>
     <license>
@@ -40,4 +33,11 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
+
+  <distributionManagement>
+    <relocation>
+      <artifactId>error_prone_annotations</artifactId>
+      <message>error_prone_type_annotations has been merged into error_prone_annotations</message>
+    </relocation>
+  </distributionManagement>
 </project>

@@ -133,7 +133,7 @@ public class UnnecessaryAnonymousClass extends BugChecker implements VariableTre
     // Replace all uses of the identifier with a method reference.
     Optional<SuggestedFix> methodReferenceReplacement =
         replaceUsesWithMethodReference(newName, varSym, implementation, state);
-    if (!methodReferenceReplacement.isPresent()) {
+    if (methodReferenceReplacement.isEmpty()) {
       return NO_MATCH;
     }
     fixBuilder.merge(methodReferenceReplacement.get());

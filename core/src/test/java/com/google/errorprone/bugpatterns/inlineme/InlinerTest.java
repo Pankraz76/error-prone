@@ -17,7 +17,6 @@
 package com.google.errorprone.bugpatterns.inlineme;
 
 import static com.google.errorprone.BugCheckerRefactoringTestHelper.TestMode.TEXT_MATCH;
-import static com.google.errorprone.bugpatterns.inlineme.Inliner.PREFIX_FLAG;
 
 import com.google.errorprone.BugCheckerRefactoringTestHelper;
 import com.google.errorprone.CompilationTestHelper;
@@ -1818,11 +1817,6 @@ public final class Caller {
             }
             """)
         .doTest();
-  }
-
-  private BugCheckerRefactoringTestHelper bugCheckerWithPrefixFlag(String prefix) {
-    return BugCheckerRefactoringTestHelper.newInstance(Inliner.class, getClass())
-        .setArgs("-XepOpt:" + PREFIX_FLAG + "=" + prefix);
   }
 
   private BugCheckerRefactoringTestHelper bugCheckerWithCheckFixCompiles() {
